@@ -27,7 +27,7 @@ export default class App extends React.Component {
         scovilleScale={sauce.scoville_scale}
         onSale={sauce.on_sale}
         type={sauce.type}
-        ownderId={sauce.owner_id} />
+        ownerId={sauce.owner_id} />
         )
         })
         }
