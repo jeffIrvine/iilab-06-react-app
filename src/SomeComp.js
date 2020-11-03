@@ -1,32 +1,18 @@
-import React, { Component } from 'react'
-import fetch from 'superagent'
+import React, { Component } from 'react';
+
 
 export default class SomeComp extends Component {
-    state = {
-        sauce: [],
- }
-    // componentDidMount = async () => {
-    //     await this.fetchSauce();
- 
-    // }
-
-// fetchSauce = async () => {
-//     this.setState({loading: true })
-
-//     const response = await fetch.get(`https://alchemy-Saucedex.herokuapp.com/api/Saucedex?Saucemon=${this.props.match.params.Saucemon}`)
-    
-//     this.setState({
-//         pokeData: response.body.results,
-//         loading: false,
-//     })
-}
 
     render() {
         return (
             <div>
-
+                <p> {this.props.uniqueId} </p>
+                <p> Name: {this.props.name} </p>
+                <p> Scoville Scale: {this.props.scovilleScale} </p>
+                <p> On Sale: {this.props.onSale} </p>
+                <p> Type: {this.props.type} </p>
+                <p> Owner Id: {this.props.ownerId} </p>
             </div>
-
         )
     }
 }
