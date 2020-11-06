@@ -20,7 +20,7 @@ export default class App extends Component {
                             render={(routerProps) => <ListPage {...routerProps} />} 
                         />
                         <Route 
-                            path="/create-sauce" 
+                            path="/create" 
                             exact
                             render={(routerProps) => <CreateSauce {...routerProps} />} 
                         />

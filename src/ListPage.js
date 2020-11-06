@@ -2,8 +2,9 @@ import './App.css';
 import React from 'react';
 import request from 'superagent';
 import SomeComp from './SomeComp';
+import { Link } from 'react-router-dom'
 
-export default class ListPage extends React.Component {
+  export default class ListPage extends React.Component {
 
   state = {
     hotSauces: []
@@ -18,6 +19,7 @@ componentDidMount = async () => {
 render() {
     return (
         <div>
+          <Link to='/create'>Create a hot sauce </Link>
             {
                 this.state.hotSauces.length > 0
                 ? this.state.hotSauces.map(hotSauce => 

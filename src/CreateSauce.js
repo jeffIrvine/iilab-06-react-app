@@ -47,18 +47,6 @@ export default class CreateSauce extends Component {
                         Name:
                         <input onChange={e=> this.setState({name: e.target.value})} type=''/>
                     </label>
-                    <label>
-                        Scoville Scale:
-                        <input onChange={e=> this.setState({scovilleScale: e.target.value})} type='number'/>
-                    </label>
-                    <label>
-                        On sale?:
-                        <input onChange={e=> this.setState({onSale: e.target.value})} type='boolean'/>
-                    </label>
-                    <label>
-                        Type:
-                        <input onChange={e=> this.setState({name: e.target.value})} type=''/>
-                    </label>
                     <button>Submit</button>
                 </form>
             </div>
