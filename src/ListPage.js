@@ -19,21 +19,22 @@ componentDidMount = async () => {
 render() {
     return (
         <div>
-          <Link to='/create'>Create a hot sauce </Link>
             {
                 this.state.hotSauces.length > 0
                 ? this.state.hotSauces.map(hotSauce => 
-                <SomeComp 
-                  uniqueId={hotSauce.id}
-                  name={hotSauce.name}
-                  scovilleScale={hotSauce.scoville_scale}
-                  onSale={hotSauce.on_sale}
-                  type={hotSauce.type}
-                  ownerId={hotSauce.owner_id} 
-                />)
+                <Link to={`/update/${hotSauce.id}`}>
+                  <SomeComp 
+                      uniqueId={hotSauce.id}
+                      name={hotSauce.name}
+                      scovilleScale={hotSauce.scoville_scale}
+                      onSale={hotSauce.on_sale}
+                      type={hotSauce.type}
+                      ownerId={hotSauce.owner_id} 
+                      />
+                  </Link>
+                  )
                 : 'loading!'
             }
         </div>
-    )
-}
+    )}
 }

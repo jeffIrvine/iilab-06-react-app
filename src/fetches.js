@@ -13,7 +13,16 @@ export async function fetchHotSauces() {
 
 export async function fetchOneHotSauce(someId) {
     try {
-        const response = await request.get(`https://obscure-hamlet-18944.herokuapp.com/hot-sauce${someId}`)
+        const response = await request.get(`https://obscure-hamlet-18944.herokuapp.com/hot-sauce/${someId}`)
+
+        return response.body;
+    } catch(err) {
+        throw err
+    }
+}
+export async function fetchType(someId) {
+    try {
+        const response = await request.get('https://obscure-hamlet-18944.herokuapp.com/types')
 
         return response.body;
     } catch(err) {
@@ -36,7 +45,7 @@ export async function creatHotSauce(newSauce) {
 export async function updateHotSauce(someId, newSauce) {
     try {
         await request
-        .put(`https://obscure-hamlet-18944.herokuapp.com/hot-sauce${someId}`)
+        .put(`https://obscure-hamlet-18944.herokuapp.com/hot-sauce/${someId}`)
         .send(newSauce);
 
         return;
@@ -47,7 +56,7 @@ export async function updateHotSauce(someId, newSauce) {
 
 export async function deleteHotSauce(someId) {
     try {
-        await request.delete(`https://obscure-hamlet-18944.herokuapp.com/hot-sauce${someId}`);
+        await request.delete(`https://obscure-hamlet-18944.herokuapp.com/hot-sauce/${someId}`);
     
     return;
     } catch(err) {

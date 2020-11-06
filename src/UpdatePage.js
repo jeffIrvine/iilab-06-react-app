@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent';
-import { creatHotSauce, fetchType } from './fetches';
-
+import { deleteHotSauce, fetchOneHotSauce, fetchType } from './fetches';
 
 
 const someThingIDontUnderstand = {
@@ -11,17 +10,19 @@ const someThingIDontUnderstand = {
 export default class CreateSauce extends Component {
     state = {
         types: [],
+        hotSauces: {},
         name: '',
-        scovilleScale: '', 
-        onSale: '',
-        typeId: '',
-        ownerId: ''
+        scovilleScale: 1, 
+        onSale: false,
+        typeId: 1,
+        ownerId: 1
     }
 
     componentDidMount = async () => {
+        const hotSauces = await fetchOneHotSauce(this.props.match.params.id);
         const types = await fetchType();
 
-        this.setState({types})
+        this.setState({types, hotSauces})
     }
 
     handleSubmit = async (e) => {
@@ -36,7 +37,8 @@ export default class CreateSauce extends Component {
         };
 
         await request
-            const sauce = await creatHotSauce(newHotSauce)
+            .put(`https://obscure-hamlet-18944.herokuapp.com/hot-sauce/${this.props.match.params.id}`)
+            .send(newHotSauce);
 
         this.props.history.push('/');
     }
@@ -50,26 +52,25 @@ export default class CreateSauce extends Component {
     render() {
         return (
             <div>
-                Create a hot sauce!
-
+                Update a hot sauce!
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Name:
-                        <input onChange={e=> this.setState({name: e.target.value})} type=''/>
+                        <input value={this.state.name} onChange={e=> this.setState({name: e.target.value})} type=''/>
                     </label>
                     <label>
-                        Scoville scale:
+                        Scoville Scale:
                         <input onChange={e=> this.setState({scovilleScale: e.target.value})} type=''/>
                     </label>
-                    <label> On Sale
-                    <select onChange={this.handleBoolean}>
+                    <label>
+                        <select onChange={this.handleBoolean}>
                             
-                            <option value={true}>True</option>
-                            <option value={false}>false</option>
-                    </select>
+                                <option value={true}>True</option>
+                                <option value={false}>false</option>
+                        </select>
                     </label>
-                    <label> Type:
-                    <select onChange={this.handleChange}>
+                    <label>
+                        <select onChange={this.handleChange}>
                             {
                                 this.state.types.map(type => <option
                                     selected={this.state.typeId === type.id}
@@ -82,6 +83,10 @@ export default class CreateSauce extends Component {
                     </label>
                     <button>Submit</button>
                 </form>
+                    <button onClick={()=> {
+                        deleteHotSauce(this.props.match.params.id);  
+                        this.props.history.push('/')}}>Delete
+                        </button>
             </div>
         )
     }
