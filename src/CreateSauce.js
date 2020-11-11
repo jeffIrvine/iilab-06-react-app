@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent';
-import { creatHotSauce, fetchType } from './fetches';
+import { fetchType } from './fetches';
 
 
 
