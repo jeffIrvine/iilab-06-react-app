@@ -32,7 +32,7 @@ export default class CreateSauce extends Component {
             name: this.state.name,
             scoville_scale: this.state.scovilleScale,
             on_sale: this.state.onSale,
-            type_id: this.state.typesId,
+            type_id: this.state.typeId,
             owner_id: someThingIDontUnderstand.userId
         };
 
@@ -44,7 +44,7 @@ export default class CreateSauce extends Component {
     }
 
     handleChange = (e) => {
-        this.setState({typesId: e.target.value});
+        this.setState({typeId: e.target.value});
     }
     handleBoolean = (e) => {
         this.setState({onSale: e.target.value});
